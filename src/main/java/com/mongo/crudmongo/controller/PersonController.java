@@ -27,6 +27,11 @@ public class PersonController {
 		return personService.create();
 	}
 
+	@PostMapping("/all")
+	public ResponseEntity<String> createAll() {
+		return personService.createAll();
+	}
+
 	@GetMapping()
 	public List<PersonDto> getAll() {
 		return personService.getAll();

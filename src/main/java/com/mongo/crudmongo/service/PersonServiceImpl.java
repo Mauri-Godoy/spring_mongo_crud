@@ -1,6 +1,8 @@
 package com.mongo.crudmongo.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -35,6 +37,31 @@ public class PersonServiceImpl implements PersonService {
 		Person person = new Person(null, name, lastName, r.nextInt(50), new Date());
 
 		personRepository.save(person);
+
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<String> createAll() {
+
+		int i = 0;
+
+		Random r = new Random();
+
+		List<Person> list = new ArrayList<>();
+
+		while (i < 100) {
+			String name = ConstantPerson.NAMES[r.nextInt(9)];
+			String lastName = ConstantPerson.LAST_NAMES[r.nextInt(9)];
+
+			Person person = new Person(null, name, lastName, r.nextInt(50), new Date());
+
+			list.add(person);
+
+			i++;
+		}
+
+		personRepository.saveAll(list);
 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

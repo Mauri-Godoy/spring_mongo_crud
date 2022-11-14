@@ -19,4 +19,6 @@ public interface PersonService {
 
 	List<PersonDto> getByName(String name);
 
+	ResponseEntity<String> createAll();
+
 }
