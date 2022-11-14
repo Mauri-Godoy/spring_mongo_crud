@@ -1,8 +1,10 @@
 package com.mongo.crudmongo.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +35,16 @@ public class PersonController {
 	@GetMapping("/age")
 	public List<PersonDto> getByAge(@RequestParam int age) {
 		return personService.getByAge(age);
+	}
+
+	@GetMapping("/date")
+	public List<PersonDto> getByDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam Date dateFrom,
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @RequestParam Date dateTo) {
+		return personService.getByDate(dateFrom, dateTo);
+	}
+
+	@GetMapping("/name")
+	public List<PersonDto> getByName(@RequestParam String name) {
+		return personService.getByName(name);
 	}
 }

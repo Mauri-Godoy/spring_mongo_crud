@@ -1,5 +1,6 @@
 package com.mongo.crudmongo.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -13,5 +14,9 @@ public interface PersonService {
 	List<PersonDto> getAll();
 
 	List<PersonDto> getByAge(int age);
+
+	List<PersonDto> getByDate(Date dateFrom, Date dateTo);
+
+	List<PersonDto> getByName(String name);
 
 }

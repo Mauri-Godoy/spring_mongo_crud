@@ -50,4 +50,16 @@ public class PersonServiceImpl implements PersonService {
 
 		return personConverter.toDtoList(personRepository.findByAge(age));
 	}
+
+	@Override
+	public List<PersonDto> getByDate(Date dateFrom, Date dateTo) {
+
+		return personConverter.toDtoList(personRepository.findByDate(dateFrom, dateTo));
+	}
+
+	@Override
+	public List<PersonDto> getByName(String name) {
+
+		return personConverter.toDtoList(personRepository.findByName(name));
+	}
 }
